@@ -32,22 +32,13 @@ void initializeArray(string words[], int size);
 bool populateArray(string words[], int size, string fileName);
 int countWords(string words[], int size);
 
-bool linearSearchUnsorted(string words[],
-                          int size,
-                          string target);
+bool linearSearchUnsorted(string words[],int size,string target);
 
-bool linearSearchSorted(string words[],
-                        int size,
-                        string target);
+bool linearSearchSorted(string words[],int size,string target);
 
-bool binarySearchWord(string words[],
-                      int size,
-                      string target);
+bool binarySearchWord(string words[],int size,string target);
 
-bool checkSpelling(string words[],
-                   int size,
-                   string target,
-                   string searchType);
+bool checkSpelling(string words[],int size,string target,string searchType);
 
 int main()
 {
@@ -60,9 +51,7 @@ cout << (file ? "FOUND" : "NOT FOUND") << endl;
     initializeArray(dictionary, MAX_WORDS);
 
     bool dictionaryLoaded =
-        populateArray(dictionary,
-                      MAX_WORDS,
-                      "dictionary.txt");
+        populateArray(dictionary, MAX_WORDS,"dictionary.txt");
 
     if (!dictionaryLoaded)
     {
@@ -74,8 +63,7 @@ cout << (file ? "FOUND" : "NOT FOUND") << endl;
     }
 
     int totalWords =
-        countWords(dictionary,
-                   MAX_WORDS);
+        countWords(dictionary,MAX_WORDS);
 
     ifstream settingsFile("settings.txt");
 
@@ -129,62 +117,38 @@ cout << (file ? "FOUND" : "NOT FOUND") << endl;
         auto start =
             high_resolution_clock::now();
 
-        bool found =
-            checkSpelling(dictionary,
-                          totalWords,
-                          word,
-                          searchType);
+        bool found = checkSpelling(dictionary, totalWords,word, searchType);
 
-        auto end =
-            high_resolution_clock::now();
+        auto end = high_resolution_clock::now();
 
         duration<double, micro> elapsed =
             end - start;
 
         if (found)
         {
-            cout << "The word "
-                 << word
-                 << " is spelled correctly!"
+            cout << "The word " << word << " is spelled correctly!"
                  << endl;
         }
         else
         {
-            cout << "Oops! It looks like '"
-                 << word
-                 << "' isn't quite right. "
-                 << "No worries, you're doing "
-                 << "great-let's try spelling it again."
-                 << endl;
+            cout << "Oops! It looks like '" << word << "' isn't quite right. " << "No worries, you're doing " << "great-let's try spelling it again." << endl;
 
             mistakes++;
         }
 
         if (DEBUG)
         {
-            if (searchType ==
-                LINEAR_SEARCH_UNSORTED)
+            if (searchType == LINEAR_SEARCH_UNSORTED)
             {
-                cout << "Linear search took "
-                     << elapsed.count()
-                     << " microseconds."
-                     << endl;
+                cout << "Linear search took " << elapsed.count() << " microseconds." << endl;
             }
-            else if (searchType ==
-                     LINEAR_SEARCH_SORTED)
+            else if (searchType == LINEAR_SEARCH_SORTED)
             {
-                cout << "Linear search took "
-                     << elapsed.count()
-                     << " microseconds."
-                     << endl;
+                cout << "Linear search took "<< elapsed.count()<< " microseconds." << endl;
             }
-            else if (searchType ==
-                     BINARY_SEARCH)
+            else if (searchType ==  BINARY_SEARCH)
             {
-                cout << "Binary search took "
-                     << elapsed.count()
-                     << " microseconds."
-                     << endl;
+                cout << "Binary search took "<< elapsed.count()<< " microseconds." << endl;
             }
         }
 
@@ -201,22 +165,17 @@ cout << (file ? "FOUND" : "NOT FOUND") << endl;
 
     if (mistakes >= maxMistakes)
     {
-        cout << "\nYou have reached the maximum "
-             << "number (" << maxMistakes
-             << ") of misspelled words allowed."
-             << endl;
+        cout << "\nYou have reached the maximum " << "number (" << maxMistakes<< ") of misspelled words allowed." << endl;
     }
 
-    cout << "\nThank you for using the spell checker!"
-         << endl;
+    cout << "\nThank you for using the spell checker!" << endl;
 
     delete[] dictionary;
 
     return 0;
 }
 
-void initializeArray(string words[],
-                     int size)
+void initializeArray(string words[],int size)
 {
     for (int i = 0; i < size; i++)
     {
@@ -224,9 +183,7 @@ void initializeArray(string words[],
     }
 }
 
-bool populateArray(string words[],
-                   int size,
-                   string fileName)
+bool populateArray(string words[], int size,string fileName)
 {
     ifstream inputFile(fileName);
 
@@ -250,8 +207,7 @@ bool populateArray(string words[],
     return true;
 }
 
-int countWords(string words[],
-               int size)
+int countWords(string words[],int size)
 {
     int count = 0;
 
@@ -266,9 +222,7 @@ int countWords(string words[],
     return count;
 }
 
-bool linearSearchUnsorted(string words[],
-                          int size,
-                          string target)
+bool linearSearchUnsorted(string words[], int size,string target)
 {
     for (int i = 0; i < size; i++)
     {
@@ -281,9 +235,7 @@ bool linearSearchUnsorted(string words[],
     return false;
 }
 
-bool linearSearchSorted(string words[],
-                        int size,
-                        string target)
+bool linearSearchSorted(string words[], int size,string target)
 {
     sort(words, words + size);
 
@@ -298,9 +250,7 @@ bool linearSearchSorted(string words[],
     return false;
 }
 
-bool binarySearchWord(string words[],
-                      int size,
-                      string target)
+bool binarySearchWord(string words[], int size,string target)
 {
     sort(words, words + size);
 
@@ -330,36 +280,21 @@ bool binarySearchWord(string words[],
     return false;
 }
 
-bool checkSpelling(string words[],
-                   int size,
-                   string target,
-                   string searchType)
+bool checkSpelling(string words[],int size, string target,string searchType)
 {
-    if (searchType ==
-        LINEAR_SEARCH_UNSORTED)
+    if (searchType == LINEAR_SEARCH_UNSORTED)
     {
-        return linearSearchUnsorted(
-            words,
-            size,
-            target);
+        return linearSearchUnsorted( words,size, target);
     }
 
-    if (searchType ==
-        LINEAR_SEARCH_SORTED)
+    if (searchType ==  LINEAR_SEARCH_SORTED)
     {
-        return linearSearchSorted(
-            words,
-            size,
-            target);
+        return linearSearchSorted( words,size,target);
     }
 
-    if (searchType ==
-        BINARY_SEARCH)
+    if (searchType == BINARY_SEARCH)
     {
-        return binarySearchWord(
-            words,
-            size,
-            target);
+        return binarySearchWord(words, size,target);
     }
 
     return false;
