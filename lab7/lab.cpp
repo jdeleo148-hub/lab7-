@@ -57,7 +57,6 @@ cout << (file ? "FOUND" : "NOT FOUND") << endl;
     if (!dictionaryLoaded)
     {
         cout << "Error opening dictionary file."<< endl;
-        delete[] dictionary;
         return 1;
     }
 
@@ -68,8 +67,6 @@ cout << (file ? "FOUND" : "NOT FOUND") << endl;
     if (!settingsFile)
     {
         cout << "Error opening settings file." << endl;
-
-        delete[] dictionary;
         return 1;
     }
 
@@ -159,8 +156,6 @@ cout << (file ? "FOUND" : "NOT FOUND") << endl;
     }
 
     cout << "\nThank you for using the spell checker!" << endl;
-
-    delete[] dictionary;
 
     return 0;
 }
