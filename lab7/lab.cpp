@@ -56,22 +56,18 @@ cout << (file ? "FOUND" : "NOT FOUND") << endl;
 
     if (!dictionaryLoaded)
     {
-        cout << "Error opening dictionary file."
-             << endl;
-
+        cout << "Error opening dictionary file."<< endl;
         delete[] dictionary;
         return 1;
     }
 
-    int totalWords =
-        countWords(dictionary,MAX_WORDS);
+    int totalWords =countWords(dictionary,MAX_WORDS);
 
     ifstream settingsFile("settings.txt");
 
     if (!settingsFile)
     {
-        cout << "Error opening settings file."
-             << endl;
+        cout << "Error opening settings file." << endl;
 
         delete[] dictionary;
         return 1;
@@ -85,14 +81,11 @@ cout << (file ? "FOUND" : "NOT FOUND") << endl;
 
     settingsFile.close();
 
-    cout << "*****************************"
-         << endl;
+    cout << "*****************************" << endl;
 
-    cout << "Welcome to the spell checker!"
-         << endl;
+    cout << "Welcome to the spell checker!" << endl;
 
-    cout << "*****************************"
-         << endl;
+    cout << "*****************************" << endl;
 
     int mistakes = 0;
     bool firstWord = true;
@@ -124,8 +117,7 @@ cout << (file ? "FOUND" : "NOT FOUND") << endl;
 
         if (found)
         {
-            cout << "The word " << word << " is spelled correctly!"
-                 << endl;
+            cout << "The word " << word << " is spelled correctly!" << endl;
         }
         else
         {
