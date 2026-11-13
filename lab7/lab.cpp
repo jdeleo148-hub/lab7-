@@ -29,7 +29,9 @@ const bool DEBUG = true;
 
 // Function Prototypes
 void initializeArray(string words[], int size);
+
 bool populateArray(string words[], int size, string fileName);
+
 int countWords(string words[], int size);
 
 bool linearSearchUnsorted(string words[],int size,string target);
@@ -50,8 +52,7 @@ cout << (file ? "FOUND" : "NOT FOUND") << endl;
 
     initializeArray(dictionary, MAX_WORDS);
 
-    bool dictionaryLoaded =
-        populateArray(dictionary, MAX_WORDS,"dictionary.txt");
+    bool dictionaryLoaded = populateArray(dictionary, MAX_WORDS,"dictionary.txt");
 
     if (!dictionaryLoaded)
     {
@@ -98,8 +99,7 @@ cout << (file ? "FOUND" : "NOT FOUND") << endl;
     char continueChoice = 'Y';
 
     while (mistakes < maxMistakes &&
-          (continueChoice == 'Y' ||
-           continueChoice == 'y'))
+          (continueChoice == 'Y' || continueChoice == 'y'))
     {
         string word;
 
@@ -114,15 +114,13 @@ cout << (file ? "FOUND" : "NOT FOUND") << endl;
 
         cin >> word;
 
-        auto start =
-            high_resolution_clock::now();
+        auto start = high_resolution_clock::now();
 
         bool found = checkSpelling(dictionary, totalWords,word, searchType);
 
         auto end = high_resolution_clock::now();
 
-        duration<double, micro> elapsed =
-            end - start;
+        duration<double, micro> elapsed = end - start;
 
         if (found)
         {
@@ -259,8 +257,7 @@ bool binarySearchWord(string words[], int size,string target)
 
     while (first <= last)
     {
-        int middle =
-            (first + last) / 2;
+        int middle =(first + last) / 2;
 
         if (words[middle] == target)
         {
